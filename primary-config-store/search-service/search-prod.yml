@@ -1,0 +1,6 @@
+search:
+ result:
+  perpage: 200
+ canexport: true
+ render: false
+duration: all
