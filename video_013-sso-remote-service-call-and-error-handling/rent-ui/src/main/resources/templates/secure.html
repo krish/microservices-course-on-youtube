@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>secured page</h1>
+        <form name="fetch-customers" th:action="@{/customers}" th:formmethod="POST">
+            <button type="submit" class="btn btn-primary">customers</button>
+        </form>
+    </div>
+
+
+    <div th:unless="${error==null}">
+        <table class="table">
+            <thead>
+            <tr>
+                <td>Status code</td>
+                <td>Error</td>
+            </tr>
+            </thead>
+
+            <tr>
+                <td><span th:text="${error.statusCode}"></span></td>
+                <td><span th:text="${error.body}"></span></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div th:if="${error==null}">
+
+        <table class="table">
+
+            <thead>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>DL number</td>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="customer: ${customers}">
+                <td><span th:text="${customer.firstName}"></span></td>
+                <td><span th:text="${customer.lastName}"></span></td>
+                <td><span th:text="${customer.dlNumber}"></span></td>
+
+
+            </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
