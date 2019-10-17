@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/taskdb?createDatabaseIfNotExist=true
+    username: root
+    password: 1qazxsw2#
+    driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: task
